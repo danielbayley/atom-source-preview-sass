@@ -1,6 +1,6 @@
 {
   "name": "source-preview-sass",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "source-preview provider for Sass.",
   "keywords": [
     "sass",
