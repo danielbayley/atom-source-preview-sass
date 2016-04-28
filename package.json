@@ -1,0 +1,112 @@
+{
+  "name": "source-preview-sass",
+  "version": "0.0.0",
+  "description": "source-preview provider for Sass.",
+  "keywords": [
+    "sass",
+    "scss",
+    "preview",
+    "source",
+    "css"
+  ],
+  "homepage": "http://atom.io/packages/source-preview-sass",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielbayley/atom-source-preview-sass.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danielbayley/atom-source-preview-sass/issues"
+  },
+  "author": {
+    "name": "danielbayley <danielbayley@me.com>"
+  },
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "atom": "*"
+  },
+  "activationHooks": [
+    "language-sass:grammar-used"
+  ],
+  "main": "./lib/main",
+  "providedServices": {
+    "preview.provider": {
+      "versions": {
+        "0.1.0": "provide"
+      }
+    }
+  },
+  "dependencies": {
+    "node-sass": "^3.6.0"
+  },
+  "config": {
+    "includePaths": [
+      "lib",
+      "styles",
+      "sass",
+      "scss",
+      "css"
+    ]
+  },
+  "coffeelintConfig": {
+    "arrow_spacing": {
+      "level": "error"
+    },
+    "colon_assignment_spacing": {
+      "level": "warn",
+      "spacing": {
+        "left": 0,
+        "right": 1
+      }
+    },
+    "indentation": {
+      "value": 1,
+      "level": "warn"
+    },
+    "max_line_length": {
+      "value": 80,
+      "level": "warn",
+      "limitComments": false
+    },
+    "no_backticks": {
+      "level": "ignore"
+    },
+    "no_empty_functions": {
+      "level": "error"
+    },
+    "no_empty_param_list": {
+      "level": "error"
+    },
+    "no_interpolation_in_single_quotes": {
+      "level": "error"
+    },
+    "no_private_function_fat_arrows": {
+      "level": "error"
+    },
+    "no_stand_alone_at": {
+      "level": "error"
+    },
+    "no_tabs": {
+      "level": "ignore"
+    },
+    "no_this": {
+      "level": "error"
+    },
+    "no_throwing_strings": {
+      "level": "warn"
+    },
+    "no_unnecessary_double_quotes": {
+      "level": "warn"
+    },
+    "no_unnecessary_fat_arrows": {
+      "level": "error"
+    },
+    "prefer_english_operator": {
+      "level": "warn",
+      "doubleNotLevel": "ignore"
+    },
+    "space_operators": {
+      "level": "warn"
+    }
+  }
+}
