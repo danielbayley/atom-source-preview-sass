@@ -1,34 +1,35 @@
 sass = config = null
 
+relative = ['.','..','../..']
+
 module.exports =
 class SassProvider
 	fromGrammarName: 'Sass'
 	fromScopeName: 'source.sass'
 	toScopeName: 'source.css'
 
-	transform: (code, {sourceMap} = {}) -> #filePath
+	transform: (code, { filePath, sourceMap } = {}) ->
 		{renderSync} = sass ?= require 'node-sass'
-		{config: { includePaths }} = config ?= require '../package.json'
+		{config: {includePaths}} = config ?= require '../package.json'
 
-		editor = atom.workspace.getActiveTextEditor()
-		indent = editor.getTabText()
+		indent = atom.workspace.getActiveTextEditor().getTabText()
 
 		options =
-			sourceMap: true
-			outFile: sourceMap
-			#omitSourceMapUrl: true
+			sourceMap: sourceMap
+			outFile: 'preview.css'
+			omitSourceMapUrl: true
 
 			indentedSyntax: true
 			outputStyle: 'expanded' #nested
 			indentType: 'tab' if indent is '\t' #indent.charAt 0
 			indentWidth: indent.length
 
-			includePaths: includePaths.concat atom.project.getPaths()
-			file: editor.getPath() #filePath
+			includePaths: includePaths.concat relative, atom.project.getPaths()
+			file: filePath
 			data: code
 
 		preview = renderSync options
 		{
 			code: preview.css.toString()
-			sourceMap: preview.map ? null
+			sourceMap: preview.map?.toString()
 		}
