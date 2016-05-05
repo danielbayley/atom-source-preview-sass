@@ -1,10 +1,10 @@
 # source-preview-sass package
 
-[source-preview][source-preview] provider for [Sass][sass].
+[source-preview] provider for [Sass].
 
 ## Requirement
 
-* [source-preview][source-preview]
+* [source-preview]
 
 
 [source-preview]: 	https://atom.io/packages/source-preview

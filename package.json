@@ -36,9 +36,6 @@
       }
     }
   },
-  "dependencies": {
-    "node-sass": "^3.6.0"
-  },
   "config": {
     "includePaths": [
       "lib",
@@ -47,6 +44,9 @@
       "scss",
       "css"
     ]
+  },
+  "scripts": {
+    "install": "cd node_modules\nexport SASS_LIBSASS_PATH=\"'$PWD/libsass'\"\ngit clone https://github.com/sass/libsass.git &&\ngit clone https://github.com/sass/sassc.git &&\ncd sassc && make"
   },
   "coffeelintConfig": {
     "arrow_spacing": {
