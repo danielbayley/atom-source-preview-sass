@@ -35,9 +35,11 @@ class SassProvider
 
 		preview = "/tmp/#{options.outFile}" #renderSync options
 
+		sassc = "#{__dirname}/../sassc/bin/sassc"
+
 		execSync """
-			*/*/bin/sassc -mMt #{options.outputStyle} \
-			-I '#{includes}' '#{filePath}' #{preview}
+			'#{sassc}' -mMt #{options.outputStyle} \
+			-I '#{includes}' '#{filePath}' '#{preview}'
 			"""
 		code: readFileSync preview,'utf-8' #css.toString() #preview.css.toString()
 		sourceMap: readFileSync "#{preview}.map",'utf-8' #preview.map?.toString()
