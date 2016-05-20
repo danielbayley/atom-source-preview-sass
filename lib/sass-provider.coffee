@@ -2,6 +2,7 @@ sass = config = null
 
 module.exports =
 class SassProvider
+
 	fromGrammarName: 'Sass'
 	fromScopeName: 'source.sass'
 	toScopeName: 'source.css'

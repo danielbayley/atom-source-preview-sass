@@ -2,6 +2,7 @@ scss = config = null
 
 module.exports =
 class ScssProvider
+
 	fromGrammarName: 'SCSS'
 	fromScopeName: 'source.css.scss'
 	toScopeName: 'source.css'
