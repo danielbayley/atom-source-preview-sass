@@ -8,7 +8,7 @@ Requirements
 
 Install
 -------
-`apm install source-preview-sass` or search "sass" under packages within Atom.
+`apm install source-preview-sass` or search “sass” under packages within Atom.
 
 License
 -------
