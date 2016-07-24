@@ -1,12 +1,11 @@
-SassProvider = require './sass-provider'
-ScssProvider = require './scss-provider'
+Sass = require './sass-provider'
+SCSS = require './scss-provider'
 
 module.exports =
-
 	activate: ->
-		@sassProvider = new SassProvider
-		@scssProvider = new ScssProvider
+		@sass = new Sass
+		@scss = new SCSS
 
-	deactivate: -> @sassProvider = @scssProvider = null
+	deactivate: -> @sass = @scss = null
 
-	provide: -> [@sassProvider, @scssProvider]
+	provide: -> [ @sass, @scss ]
