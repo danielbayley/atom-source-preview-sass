@@ -26,6 +26,11 @@
   "activationHooks": [
     "language-sass:grammar-used"
   ],
+  "activationCommands": [
+    {
+      "atom-text-editor:not(.mini)": "source-preview:toggle"
+    }
+  ],
   "main": "./lib/main",
   "providedServices": {
     "preview.provider": {

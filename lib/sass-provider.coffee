@@ -1,20 +1,25 @@
-sass = config = null
-
 module.exports =
-class SassProvider
+class Sass
 
 	fromGrammarName: 'Sass'
 	fromScopeName: 'source.sass'
 	toScopeName: 'source.css'
 
-	relative: ['.','..','../..']
+	include: ['.','..','../..','lib','styles','sass','css']
+		#'assets/styles'
+		#'assets/sass'
+		#'assets/css'
+		#'partials'
+		#'mixins'
+		#'modules'
+		#'helpers'
+	#]
 #-------------------------------------------------------------------------------
 
-	transform: (code, { filePath, sourceMap } = {}) ->
-		# {renderSync} = sass ?= require 'node-sass'
+	transform: (code, { filePath, sourceMap }) ->
+		# {renderSync} = require 'node-sass'
 		{execSync} = require 'child_process'
 		{readFileSync} = require 'fs'
-		{config: {includePaths}} = config ?= require '../package.json'
 
 		indent = atom.workspace.getActiveTextEditor().getTabText()
 
@@ -28,11 +33,11 @@ class SassProvider
 			indentType: 'tab' if indent is '\t' #indent.charAt 0
 			indentWidth: indent.length
 
-			includePaths: includePaths.concat @relative, atom.project.getPaths()
+			include: @include.concat atom.project.getPaths()
 			file: filePath
 			data: code
 
-		includes = options.includePaths.join "' -I '"
+		include = options.include.join "' -I '"
 
 		preview = "/tmp/#{options.outFile}" #renderSync options
 
@@ -40,7 +45,7 @@ class SassProvider
 
 		execSync """
 			'#{sassc}' -mMt #{options.outputStyle} \
-			-I '#{includes}' '#{filePath}' '#{preview}'
+			-I '#{include}' '#{filePath}' '#{preview}'
 			"""
 		code: readFileSync preview,'utf-8' #css.toString() #preview.css.toString()
 		sourceMap: readFileSync "#{preview}.map",'utf-8' #preview.map?.toString()
