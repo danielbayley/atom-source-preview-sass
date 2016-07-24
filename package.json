@@ -35,6 +35,7 @@
     }
   },
   "scripts": {
+    "preinstall": "apm install source-preview",
     "postinstall": "export SASS_LIBSASS_PATH=\"'$PWD/libsass'\"\ngit clone https://github.com/sass/libsass.git &&\ngit clone https://github.com/sass/sassc.git &&\ncd sassc && make"
   }
 }
